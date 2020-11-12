@@ -1,0 +1,18 @@
+---
+version: "3.8"
+
+services:
+  ark-server:
+    build: .
+    volumes:
+      - type: volume # You could also bind-mount this to your local FS (see below)
+        source: ark-data
+        target: /app/7dtd/data/Saves
+        # - type: bind
+        # source: /home/ark/Saves
+        # target: /app/ark/data/Saves
+    ports:
+      - 27015:27015/udp
+
+volumes:
+  ark-data:

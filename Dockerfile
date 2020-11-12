@@ -30,3 +30,18 @@ RUN echo "Create server directories..." && \
     chown -R ark ${SERVER_HOME}
 
 USER ark
+
+# Query port for Steam server browser.
+EXPOSE 27015/udp
+
+# Game client port(s).
+EXPOSE 7777/udp
+EXPOSE 7778/udp
+
+# RCON remote console port.
+EXPOSE 27020/tcp
+
+# Install custom entrypoint script.
+COPY scripts/entrypoint.sh /entrypoint.sh
+
+ENTRYPOINT ["/entrypoint.sh"]
