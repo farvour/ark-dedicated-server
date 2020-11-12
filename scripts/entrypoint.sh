@@ -42,9 +42,6 @@ question_flags=(
     "SessionName=${SESSION_NAME}"
     "ServerPassword=${SERVER_PASSWORD}"
     "ServerAdminPassword=${SERVER_ADMIN_PASSWORD}"
-    "AllowCaveBuildingPVE=true"
-    "PreventDiseases=true"
-    "PreventTribeAlliances=true"
 )
 dash_flags=(
     "-game" "-server" "${NOBATTLEYE}"
@@ -54,12 +51,8 @@ dash_flags=(
 joined_question_flags=$(array_join '?' ${question_flags[*]})
 joined_dash_flags=$(array_join ' ' ${dash_flags[*]})
 
-# echo "Joined flags: ${joined_question_flags}"
-# echo "Joined dash flags: ${joined_dash_flags}"
-
-exit 0
-
-# This comes from the Dockerfile/docker ENV.
+# The variable $SERVER_INSTALL_DIR comes from the Dockerfile/docker ENV.
 cd ${SERVER_INSTALL_DIR}/ShooterGame/Binaries/Linux/
 
+# Bring the server up!
 ./ShooterGameServer ${joined_question_flags} ${joined_dash_flags}
