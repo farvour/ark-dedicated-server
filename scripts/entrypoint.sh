@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-set -xe
+set -e
 
 function array_join { local IFS="$1"; shift; echo "$*"; }
 
@@ -26,7 +26,7 @@ echo "Starting server..."
 if [ -d ${SERVER_DATA_DIR}/config ]; then
     echo "Copying/overwriting INI configurations with those baked into the image."
     cp -fpv \
-        ${SERVER_DATA_DIR}/config/{Game,GameUserSettings}.ini \
+        ${SERVER_DATA_DIR}/config/Game.ini \
         ${SERVER_SAVED_DATA_DIR}/Config/LinuxServer/
     echo "Done."
 fi
@@ -42,6 +42,35 @@ question_flags=(
     "SessionName=${SESSION_NAME}"
     "ServerPassword=${SERVER_PASSWORD}"
     "ServerAdminPassword=${SERVER_ADMIN_PASSWORD}"
+    MaxPlayers=20
+    AllowCaveBuildingPVE=true
+    AllowHitMarkers=true
+    AllowThirdPersonPlayer=true
+    alwaysNotifyPlayerJoined=true
+    alwaysNotifyPlayerLeft=true
+    AutoSavePeriodMinutes=10.000000
+    DayCycleSpeedScale=0.8
+    DayTimeSpeedScale=0.8
+    NightTimeSpeedScale=1.5
+    PlayerDamageMultiplier=1.5
+    StructureDamageMultiplier=1.5
+    PlayerResistanceMultiplier=0.5
+    PlayerCharacterHealthRecoveryMultiplier=1.5
+    ResourcesRespawnPeriodMultiplier=1.2
+    DinoCountMultiplier=0.7
+    DifficultyOffset=0.1
+    DisableDinoDecayPvE=True
+    DisableStructureDecayPvE=True
+    ItemStackSizeMultiplier=2.0
+    MaxTamedDinos=1000.0
+    PreventDiseases=True
+    PreventTribeAlliances=True
+    RCONPort=27020
+    RCONServerGameLogBuffer=600.000000
+    ServerCrosshair=True
+    serverPVE=True
+    ShowMapPlayerLocation=True
+    StructurePickupTimeAfterPlacement=90.0
 )
 dash_flags=(
     "-game" "-server" "${NOBATTLEYE}"
@@ -50,6 +79,9 @@ dash_flags=(
 
 joined_question_flags=$(array_join '?' ${question_flags[*]})
 joined_dash_flags=$(array_join ' ' ${dash_flags[*]})
+
+echo "Question flags: ${joined_question_flags}"
+echo "Dash flags: ${joined_dash_flags}"
 
 # The variable $SERVER_INSTALL_DIR comes from the Dockerfile/docker ENV.
 cd ${SERVER_INSTALL_DIR}/ShooterGame/Binaries/Linux/

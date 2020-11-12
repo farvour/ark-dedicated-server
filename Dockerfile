@@ -46,6 +46,8 @@ RUN echo "Downloading and installing ark server with steamcmd..." && \
 
 ENV SERVER_SAVED_DATA_DIR /app/ark/dedicated-server/ShooterGame/Saved
 
+COPY --chown=ark:nogroup config/ ${SERVER_DATA_DIR}/config/
+
 # Query port for Steam server browser.
 EXPOSE 27015/udp
 EXPOSE 27015/tcp
