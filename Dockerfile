@@ -44,6 +44,8 @@ RUN echo "Downloading and installing steamcmd..." && \
 RUN echo "Downloading and installing ark server with steamcmd..." && \
     ${SERVER_HOME}/steamcmd.sh +runscript steamcmd-ark.script
 
+ENV SERVER_SAVED_DATA_DIR /app/ark/dedicated-server/ShooterGame/Saved
+
 # Query port for Steam server browser.
 EXPOSE 27015/udp
 EXPOSE 27015/tcp
