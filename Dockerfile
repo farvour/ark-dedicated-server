@@ -31,6 +31,19 @@ RUN echo "Create server directories..." && \
 
 USER ark
 
+WORKDIR ${SERVER_HOME}
+
+COPY scripts/steamcmd-ark.script ${SERVER_HOME}/
+
+RUN echo "Downloading and installing steamcmd..." && \
+    wget http://media.steampowered.com/installer/steamcmd_linux.tar.gz && \
+    tar -zxvf steamcmd_linux.tar.gz
+
+# This is most likely going to be the largest layer created; all the game files for the dedicated server.
+# NOTE: It is a good idea to do as much as possible _beyond_ this point to avoid Docker having to re-create it.
+RUN echo "Downloading and installing ark server with steamcmd..." && \
+    ${SERVER_HOME}/steamcmd.sh +runscript steamcmd-ark.script
+
 # Query port for Steam server browser.
 EXPOSE 27015/udp
 
