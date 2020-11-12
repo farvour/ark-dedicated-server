@@ -17,7 +17,7 @@ RUN echo "Installing necessary system packages to support steam CLI installation
     apt-get install -y bash expect htop tmux lib32gcc1 pigz telnet wget git && \
     rm -rf /var/lib/apt/lists/*
 
-ENV PROC_UID 8999
+ENV PROC_UID 7998
 
 RUN echo "Create a non-privileged user to run with." && \
     useradd -u ${PROC_UID} -d ${SERVER_HOME} -g nogroup ark
