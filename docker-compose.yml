@@ -8,15 +8,18 @@ services:
     volumes:
       - type: volume # You could also bind-mount this to your local FS (see below)
         source: ark-data
-        target: /app/7dtd/data/Saves
+        target: /app/ark/dedicated-server/ShooterGame/Saved
         # - type: bind
         # source: /home/ark/Saves
         # target: /app/ark/data/Saves
     ports:
       - 27015:27015/udp
-      - 7777:7777/udp
-      - 7778:7778/udp
+      - 27015:27015/tcp
       - 27020:27020/tcp
+      - 7777:7777/udp
+      - 7777:7777/tcp
+      - 7778:7778/udp
+      - 7778:7778/tcp
 
 volumes:
   ark-data:

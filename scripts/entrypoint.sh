@@ -5,7 +5,7 @@ echo "Starting server..."
 
 : ${MAP_NAME:="TheIsland"}
 : ${SESSION_NAME:=""}
-: ${SERVER_PASSWORD:="password"}
+: ${SERVER_PASSWORD:=""}
 : ${SERVER_ADMIN_PASSWORD:="admin"}
 : ${NOBATTLEYE:="-NoBattlEye"}
 

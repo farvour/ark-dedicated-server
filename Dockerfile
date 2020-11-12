@@ -46,10 +46,13 @@ RUN echo "Downloading and installing ark server with steamcmd..." && \
 
 # Query port for Steam server browser.
 EXPOSE 27015/udp
+EXPOSE 27015/tcp
 
 # Game client port(s).
 EXPOSE 7777/udp
+EXPOSE 7777/tcp
 EXPOSE 7778/udp
+EXPOSE 7778/tcp
 
 # RCON remote console port.
 EXPOSE 27020/tcp
