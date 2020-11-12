@@ -4,6 +4,7 @@ version: "3.8"
 services:
   ark-server:
     build: .
+    env_file: .env
     volumes:
       - type: volume # You could also bind-mount this to your local FS (see below)
         source: ark-data
@@ -13,6 +14,9 @@ services:
         # target: /app/ark/data/Saves
     ports:
       - 27015:27015/udp
+      - 7777:7777/udp
+      - 7778:7778/udp
+      - 27020:27020/tcp
 
 volumes:
   ark-data:
