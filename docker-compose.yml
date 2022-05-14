@@ -2,12 +2,13 @@
 version: "3.8"
 
 services:
-  ark-server:
+  server:
     build: .
-    env_file: .env
+    env_file:
+      - .env
     volumes:
       - type: volume
-        source: ark-data
+        source: data
         target: /app/ark/dedicated-server/ShooterGame/Saved
     ports:
       - 27015:27015/udp
@@ -19,4 +20,4 @@ services:
       - 7778:7778/tcp
 
 volumes:
-  ark-data:
+  data: null
