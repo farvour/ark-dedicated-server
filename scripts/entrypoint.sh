@@ -26,6 +26,7 @@ echo "=== starting server..."
 
 if [ -d ${SERVER_DATA_DIR}/config ]; then
     echo "=== copying/overwriting INI configurations with those baked into the image..."
+    mkdir -p ${SERVER_SAVED_DATA_DIR}/Config/LinuxServer/
     cp -fpv \
         ${SERVER_DATA_DIR}/config/Game.ini \
         ${SERVER_SAVED_DATA_DIR}/Config/LinuxServer/

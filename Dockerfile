@@ -20,15 +20,16 @@ ENV PROC_UID 7998
 ENV PROC_USER game-server
 ENV PROC_GROUP nogroup
 
-RUN echo "=== create a non-privileged user to run with..." && \
-    useradd -u ${PROC_UID} -d ${SERVER_HOME} -g ${PROC_GROUP} ${PROC_USER}
+RUN echo "=== create a non-privileged user to run with..." \
+    && useradd -u ${PROC_UID} -d ${SERVER_HOME} -g ${PROC_GROUP} ${PROC_USER}
 
-RUN echo "=== create server directories..." && \
-    mkdir -p ${SERVER_HOME} && \
-    mkdir -p ${SERVER_INSTALL_DIR} && \
-    mkdir -p ${SERVER_INSTALL_DIR}/Mods && \
-    mkdir -p ${SERVER_DATA_DIR} && \
-    chown -R ${PROC_USER} ${SERVER_HOME}
+RUN echo "=== create server directories..." \
+    && mkdir -p ${SERVER_HOME} \
+    && mkdir -p ${SERVER_INSTALL_DIR} \
+    && mkdir -p ${SERVER_INSTALL_DIR}/Mods\
+    && mkdir -p ${SERVER_DATA_DIR} \
+    && mkdir -p ${SERVER_HOME}/Steam \
+    && chown -R ${PROC_USER} ${SERVER_HOME}
 
 USER ${PROC_USER}
 
