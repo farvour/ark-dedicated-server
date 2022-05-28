@@ -74,7 +74,7 @@ question_flags=(
     ServerCrosshair=True
     serverPVE=True
     ShowMapPlayerLocation=True
-    StructurePickupTimeAfterPlacement=90.0
+    StructurePickupTimeAfterPlacement=300.0
 )
 dash_flags=(
     "-game" "-server" "${NOBATTLEYE}"
